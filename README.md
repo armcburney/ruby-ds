@@ -1,2 +1,2 @@
-# _crystal
-:gem: Crystal files.
+# crystal
+:gem:
