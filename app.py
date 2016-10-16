@@ -19,7 +19,7 @@ def index():
 
 
 @app.route('/directors')
-def index_dir():
+def directors():
     """
         List of engsoc directors.
     """
@@ -27,11 +27,11 @@ def index_dir():
 
 
 @app.route('/directors/<dirname>')
-def index_dir_2(dirname):
+def director_info(dirname):
     """
         Listing for each engsoc director.
     """
-    return 'Directors' % dirname
+    return 'Director %s' % dirname
 
 
 if __name__ == "__main__":
