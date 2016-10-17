@@ -2,11 +2,11 @@
 #pylint: disable=C0103
 
 """
-    app.py - webserver for engsoc directorships.
-    Coded by: Andrew McBurney
+    EngSoc Directorships - webserver for engsoc directorship listings.
+    Coded by: Andrew McBurney (VP Academic 'B'-Society)
 """
 
-import glob, os
+import os
 from flask import Flask
 from flask import render_template as render
 
@@ -19,7 +19,7 @@ def index():
     """
         Root index for app.
     """
-    return render('index.jade')
+    return render('index.jade', title='EngSoc Directorships')
 
 
 @app.route('/directors')
@@ -27,7 +27,7 @@ def list_directors():
     """
         Renders the list of engsoc directors all EngSoc directors
     """
-    return render('directors.jade')
+    return render('directors.jade', title='List of EngSoc Directors')
 
 
 @app.route('/directors/<dirname>')
@@ -36,11 +36,12 @@ def show_director(dirname):
         Listing for each engsoc director. Shows things such as name, email,
         directorships they're listed for.
     """
-    for file in os.listdir("/static/private/directors"):
-        if file.endswith(".txt"):
-            print(file)
+    for file_name in os.listdir("/static/private/directors"):
+        if file_name.endswith(".txt"):
+            print file_name
 
-    return render('director_name.jade', name=dirname)
+    return render('director_name.jade', title='EngSoc Director - ' + dirname,
+                  name=dirname)
 
 
 @app.route('/directorships')
@@ -48,15 +49,16 @@ def list_directorships():
     """
         Lists all directorships, and the directors that belong to them.
     """
-    return render('directorships.jade')
+    return render('directorships.jade', title='List of EngSoc Directorships')
 
 
 @app.route('/directorships/<directorship>')
-def show_directorship():
+def show_directorship(directorship):
     """
         Lists all directorships, and the directors that belong to them.
     """
-    return render('directorship.jade', name=directorship)
+    return render('directorship.jade', title='EngSoc Directorship - ' +
+                  directorship, name=directorship)
 
 
 if __name__ == "__main__":
