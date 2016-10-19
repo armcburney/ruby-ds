@@ -8,7 +8,7 @@
     Inteded for use within EngSoc executive.
 """
 
-import os
+import helpers
 from os import path
 from flask import Flask
 from flask import render_template as render
@@ -35,17 +35,12 @@ def list_directors():
         a list of EngSoc directors, with their information stored in private
         JSON files.
     """
-    directors = []
-
-    # Open json files with data for directors
-    for name in os.listdir(path.join(app.static_folder, 'private/directors')):
-        if name.endswith('.json'):
-            with open(path.join(app.static_folder, 'private/directors', name),
-                      'r') as director_file:
-                directors.append(director_file.read())
+    directorships = helpers.get_json(directory_path=
+                                     path.join(app.static_folder,
+                                               'private/directors'))
 
     return render('directors.jade', title='List of EngSoc Directors',
-                  directors=directors)
+                  directorships=directorships)
 
 
 @app.route('/directors/<dirname>')
@@ -67,7 +62,12 @@ def list_directorships():
         renders the list of directorships for the given term, with the
         information stored in private JSON files.
     """
-    return render('directorships.jade', title='List of EngSoc Directorships')
+    directorships = helpers.get_json(directory_path=
+                                     path.join(app.static_folder,
+                                               'private/directorships'))
+
+    return render('directorships.jade', title='List of EngSoc Directorships',
+                  directorships=directorships)
 
 
 @app.route('/directorships/<directorship>')

@@ -1,0 +1,10 @@
+include ./includes/head
+
+h1 Directorships
+
+- for directorship in directorships
+  h3 #{directorship.name}
+
+  - for director in directorship.directors
+    h4 #{director.name}
+    h4 #{director.program}
