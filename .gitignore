@@ -1,3 +1,5 @@
+# Files
 .DS_Store
-private
-*.pyc
+
+# Folders
+target/
