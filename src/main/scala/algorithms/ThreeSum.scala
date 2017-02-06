@@ -2,7 +2,7 @@
   * ThreeSum.scala
   *
   * @author: Andrew McBurney
-  * @fileoverview: finds the indices of values in array that sum to 0 and prints
+  * @note:   Finds the indices of values in array that sum to 0 and prints
   * them
   */
 
@@ -10,9 +10,9 @@ package algorithms
 
 object ThreeSum {
   /**
-    * @brief: Prints the indices of values in array that sum to 0
-    *         Time complexity: O(n^3)
-    *         Spacial complexity: O(n^3)
+    * @usecase: Prints the indices of values in array that sum to 0
+    * @note:    Time complexity: O(n^3)
+    *           Spacial complexity: O(n^3)
     */
   def threeSum(arr: Array[Int], n: Int) =
     for (i <- 1 until n-2) {
