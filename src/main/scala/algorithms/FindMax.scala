@@ -25,7 +25,8 @@ object FindMaximum {
   }
 
   /**
-    * @usecase: Returns the max value of an array in optimal time recursively
+    * @usecase: Returns the max value of an array in optimal time recursively,
+    *           using the tail recursion optimization
     * @note:    Time complexity:    Theta(n)
     *           Spacial complexity: Theta(n)
     */
