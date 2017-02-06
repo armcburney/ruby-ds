@@ -1,25 +1,40 @@
 /**
   * FindMaximum.scala
+  *
+  * @author: Andrew McBurney
+  * @fileoverview: finds the maximum value in an array in Theta(n) time
   */
 
 package algorithms
 
+import scala.annotation.tailrec
+
 object FindMaximum {
   /**
-    * Returns the max value of an array in optimal time. Theta(n)
+    * @brief: Returns the max value of an array in optimal time with iteration
+    *         Time complexity:    Theta(n)
+    *         Spacial complexity: Theta(n)
     */
-  def findMax(arr: Array[Int], n: Int): Int = {
+  def find_max(arr: Array[Int], n: Int): Int = {
     var max: Int = arr(0)
-
-    for (i <- 1 until n-1) {
+    for (i <- 1 until n-1)
       if (arr(i) > max) max = arr(i)
-    }
 
-    return max
+    max
   }
 
-  def main(args: Array[String]): Unit = {
-    val array = Array(0,-1,8,3,-2,4,-5)
-    println(findMax(array, array.length))
+  /**
+    * @brief: Returns the max value of an array in optimal time recursively
+    *         Time complexity:    Theta(n)
+    *         Spacial complexity: Theta(n)
+    */
+  def find_max_recursive(arr: Array[Int]): Int = {
+    @tailrec
+    def recurse(arr: Array[Int], max: Int): Int =
+      if (arr.isEmpty) max
+      else if (arr.head > max) recurse(arr.tail, arr.head)
+      else recurse(arr.tail, max)
+
+    recurse(arr.tail, arr.head)
   }
 }
