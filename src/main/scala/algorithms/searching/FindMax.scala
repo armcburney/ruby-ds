@@ -2,7 +2,8 @@
   * FindMaximum.scala
   *
   * @author: Andrew McBurney
-  * @note:   Finds the maximum value in an array in Theta(n) time
+  * @note:   Finds the maximum value in an array in Theta(n) time using linear
+  *          search
   */
 
 package algorithms

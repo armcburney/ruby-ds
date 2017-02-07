@@ -1,9 +1,9 @@
-  /**
-    * BinarySearchSpec.scala
-    *
-    * @author: Andrew McBurney
-    * @note:   Test harness for BinarySearch.scala
-    */
+/**
+  * BinarySearchSpec.scala
+  *
+  * @author: Andrew McBurney
+  * @note:   Test harness for BinarySearch.scala
+  */
 
 package algorithms
 
