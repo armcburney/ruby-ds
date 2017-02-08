@@ -18,7 +18,7 @@
   * left then all down)
   */
 
-package algorithms
+package algorithms.searching
 
 import scala.annotation.tailrec
 

@@ -5,7 +5,7 @@
   * @note:   Test harness for BinarySearch.scala
   */
 
-package algorithms
+package algorithms.searching
 
 import BinarySearch._
 import org.specs2.mutable.Specification

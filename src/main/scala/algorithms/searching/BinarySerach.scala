@@ -5,7 +5,7 @@
   * @note:   Finds a value in an array in O(log(n)) time
   */
 
-package algorithms
+package algorithms.searching
 
 import scala.annotation.tailrec
 

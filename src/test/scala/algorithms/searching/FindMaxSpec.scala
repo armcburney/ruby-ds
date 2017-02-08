@@ -5,7 +5,7 @@
   * @note:   Test harness for FindMaximum.scala
   */
 
-package algorithms
+package algorithms.searching
 
 import FindMaximum._
 import org.specs2.mutable.Specification

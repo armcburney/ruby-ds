@@ -6,7 +6,7 @@
   *          search
   */
 
-package algorithms
+package algorithms.searching
 
 import scala.annotation.tailrec
 

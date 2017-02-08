@@ -5,7 +5,7 @@
   * @note:   Test harness for SaddlebackSearch.scala
   */
 
-package algorithms
+package algorithms.searching
 
 import SaddlebackSearch._
 import org.specs2.mutable.Specification
