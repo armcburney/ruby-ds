@@ -3,3 +3,4 @@
 
 # Folders
 target/
+.ensime_cache/
