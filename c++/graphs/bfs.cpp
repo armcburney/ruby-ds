@@ -1,6 +1,14 @@
 /**
  * bfs.cpp
  * Coded by: Andrew McBurney
+ *
+ * A breadth-first search of an undirected graph begins at a specified vertex s.
+ * The search “spreads out” from s, proceeding in layers.
+ *
+ * First, all the neighbours of s are explored.
+ * Next, the neighbours of those neighbours are explored.
+ * This process continues until all vertices have been explored.
+ * A queue is used to keep track of the vertices to be explored.
  */
 
 #include <queue>
@@ -24,7 +32,7 @@ struct Vertex {
 
 // Undirected graph representation (edges are pair of adjacent vertices)
 struct Graph {
-  vector<Vertex> verticies;
+  vector<VertexPtr> verticies;
 };
 
 /**
@@ -36,8 +44,8 @@ void BFS(Graph G, VertexPtr s) {
 
   // Initialize the graph vertices
   for (auto &v : G.verticies) {
-    v.color = white;
-    v.parent = nullptr;
+    v->color = white;
+    v->parent = nullptr;
   }
 
   // Visit the starting node
@@ -48,6 +56,7 @@ void BFS(Graph G, VertexPtr s) {
     VertexPtr u = Q.front();
     Q.pop();
 
+    // 'Spread out' to all the adjacent neighbours
     for (auto &v : u->adjacent) {
       /**
        * If the vertex is not visited yet (ie. white), add it to the queue of
