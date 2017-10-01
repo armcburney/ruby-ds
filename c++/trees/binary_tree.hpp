@@ -13,21 +13,18 @@ class BinaryTree {
 
 public:
   BinaryTree( NodePtr );
-
   NodePtr getRoot();
-
-  // Insert a node in O(log(n))
+  NodePtr findNode( int );
   void insertNode( NodePtr );
-  void insertNode( NodePtr, NodePtr );
-
-  // Insert a delete a node with data in O(log(n))
   void deleteNode( int );
 
-  // Finds a node in O(log(n))
-  NodePtr findNode( int );
-  NodePtr findNode( int, NodePtr );
-
 private:
+  NodePtr findNode( int, NodePtr );
+  NodePtr findMinNode( NodePtr );
+  void setRoot( NodePtr );
+  void insertNode( NodePtr, NodePtr );
+  void swapParentChildNode( NodePtr, NodePtr, NodePtr );
+
   NodePtr root;
 
 };
