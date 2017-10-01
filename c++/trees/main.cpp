@@ -18,10 +18,14 @@ int main( void ) {
   for ( int i = 0; i < 10; i++ ) nodes.push_back(std::make_shared<Node>(rand() % 1000 + 1));
   for ( auto node : nodes ) bt.insertNode(node);
 
-  std::cout << "Pre order traversal." << std::endl;
+  std::cout << std::endl << "Pre order traversal." << std::endl;
   BinaryTreeHelper::preOrderTraversal(bt.getRoot());
 
-  std::cout << "Post order traversal." << std::endl;
+  std::cout << std::endl << "Post order traversal." << std::endl;
   BinaryTreeHelper::postOrderTraversal(bt.getRoot());
+
+  std::cout << std::endl << "In order traversal." << std::endl;
+  BinaryTreeHelper::inOrderTraversal(bt.getRoot());
+
   return 0;
 }
