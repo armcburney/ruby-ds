@@ -17,6 +17,7 @@ namespace BinaryTreeHelper {
   void preOrderTraversal( NodePtr );
   void postOrderTraversal( NodePtr );
   void inOrderTraversal( NodePtr );
+  int height( NodePtr );
 
 };
 

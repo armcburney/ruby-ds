@@ -14,12 +14,14 @@ int main( void ) {
   BinaryTree bt( nullptr );
   std::vector<NodePtr> nodes;
 
-  for ( int i = 1; i <= 10; i++ ) nodes.push_back(std::make_shared<Node>(i));
+  // Populate tree with ten arbitrary nodes
+  for ( int i = 0; i < 10; i++ ) nodes.push_back(std::make_shared<Node>(rand() % 1000 + 1));
   for ( auto node : nodes ) bt.insertNode(node);
-
-  bt.deleteNode(1);
 
   std::cout << "Pre order traversal." << std::endl;
   BinaryTreeHelper::preOrderTraversal(bt.getRoot());
+
+  std::cout << "Post order traversal." << std::endl;
+  BinaryTreeHelper::postOrderTraversal(bt.getRoot());
   return 0;
 }

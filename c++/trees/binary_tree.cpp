@@ -38,7 +38,7 @@ void BinaryTree::insertNode( NodePtr node, NodePtr curr ) {
   } else if ( node->getData() <= curr->getData() ) {
     // Recurse left
     insertNode(node, curr->getLeft());
-  } else {
+  } else if ( node->getData() > curr->getData() ) {
     // Recurse right
     insertNode(node, curr->getRight());
   }
