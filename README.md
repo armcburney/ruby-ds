@@ -1,9 +1,7 @@
 # algorithms
-Repository for many algorithms coded in C++, and Scala.
+Common algorithms and data structures written in Ruby.
 
 ## Purpose
-This repository provides the implementation of various algorithms in implemented in C++, and Scala.
+This repository provides the implementation of various algorithms in Ruby.
 
-The purpose of this repo is to reacquaint myself with various algorithms used in computer science, as well as their spacial and time complexities.
-
-My goal is to implement at least one algorithm a day.
+The purpose of this repository is to re-acquaint myself with various algorithms used in computer science, as well as their spacial and time complexities.
