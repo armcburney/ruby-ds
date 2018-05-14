@@ -106,6 +106,15 @@ module Algorithms
       find_max(node.right)
     end
 
+    # Finds and returns the next highest node in a subtree.
+    #
+    # @param [Algorithms::Node] node
+    # @return [Algorithms::Node]
+    def next_highest_node(node = root)
+      raise "No higher node." if node.right.nil? && (node.parent.nil? || node.parent.val < node.val)
+      node.right.nil? ? node.parent : find_min(node.right)
+    end
+
     # Returns the number of nodes beneath a given node.
     #
     # @param [Algorithms::Node] node
@@ -139,6 +148,39 @@ module Algorithms
         return false if node.left.val >= node.val
         valid?(node.left)
       end
+    end
+
+    # Prints the tree node values pre-order.
+    #
+    # @param [Algorithms::Node] node
+    def pre_order_traversal(node = root)
+      return if node.nil?
+
+      puts node.val
+      pre_order_traversal(node.left)
+      pre_order_traversal(node.right)
+    end
+
+    # Prints the tree node values in-order.
+    #
+    # @param [Algorithms::Node] node
+    def in_order_traversal(node = root)
+      return if node.nil?
+
+      pre_order_traversal(node.left)
+      puts node.val
+      pre_order_traversal(node.right)
+    end
+
+    # Prints the tree node values post-order.
+    #
+    # @param [Algorithms::Node] node
+    def post_order_traversal(node = root)
+      return if node.nil?
+
+      pre_order_traversal(node.left)
+      pre_order_traversal(node.right)
+      puts node.val
     end
 
     private

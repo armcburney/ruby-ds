@@ -162,6 +162,15 @@ describe Algorithms::BinaryTree do
     end
   end
 
+  describe "#next_highest_node" do
+    context "normal tree" do
+      it "returns the next highest node for the root" do
+        tree = normal_tree
+        expect(tree.next_highest_node.val).to be(6)
+      end
+    end
+  end
+
   describe "#count_nodes" do
     context "normal tree" do
       it "returns the number of elements in the tree when given root value" do
