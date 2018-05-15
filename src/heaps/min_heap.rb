@@ -2,46 +2,77 @@
 
 module Algorithms
   class MinHeap
-    # Instantiates a new minimum heap
+    # Instantiates a new minimum heap.
     def initialize
       @heap = []
     end
 
-    # O(log(n))
+    # Inserts an element into the heap.
+    #
+    # Time complexity:
+    #   O(log(n)) worst case
+    #   O(log(1)) best case
+    #
+    # @param [Integer] val
     def insert(val)
       @heap << val
       bubble_up
     end
 
-    # O(log(n))
+    # Deletes the minimum element from the heap.
+    #
+    # Time complexity:
+    #   O(log(n)) worst case
+    #   O(log(n)) best case
     def delete_min
       @heap[0], @heap[size - 1] = @heap[size - 1], @heap[0]
-      min = @heap.pop
+      minimum = @heap.pop
       bubble_down
-      min
+      minimum
     end
 
-    # O(1)
+    # Returns the minimum element of the heap.
+    #
+    # Time complexity:
+    #   O(1) worst case
+    #   O(1) best case
     def min
       @heap.first
     end
 
-    # O(1)
+    # Returns the size of the heap.
+    #
+    # Time complexity:
+    #   O(1) worst case
+    #   O(1) best case
     def size
       @heap.size
     end
 
-    # O(log(n))
+    # Returns the height of the heap.
+    #
+    # Time complexity:
+    #   O(log(n)) worst case
+    #   O(log(n)) best case
     def height
       traverse_left
     end
 
-    # O(1)
+    # Returns `true` if the heap is empty.
+    #
+    # Time complexity:
+    #   O(1) worst case
+    #   O(1) best case
     def empty?
       size.zero?
     end
 
-    # Sorts an array using heap sort, in decreasing order
+    # Sorts an array using heap sort, in decreasing order.
+    #
+    # Time complexity:
+    #   O(n * log(n)) worst case
+    #   O(n * log(n)) average case
+    #   O(n) best case
     def self.decreasing_order_sort(arr)
       heap = MinHeap.new
       arr.each { |e| heap.insert(e) }
@@ -50,7 +81,6 @@ module Algorithms
 
     private
 
-    # O(log(n))
     def bubble_up(index = size - 1)
       parent_i = parent_index(index)
 
@@ -64,7 +94,6 @@ module Algorithms
       bubble_up(parent_i)
     end
 
-    # O(log(n))
     def bubble_down(index = 0)
       left  = @heap[left_child_index(index)]
       right = @heap[right_child_index(index)]
@@ -79,28 +108,23 @@ module Algorithms
       end
     end
 
-    # O(log(n))
     def traverse_left(index = 0, count = 0)
       return count if out_of_bounds?(index)
       traverse_left(left_child_index(index), count + 1)
     end
 
-    # O(1)
     def parent_index(index)
       ((index - 1) / 2).floor
     end
 
-    # O(1)
     def left_child_index(index)
       2 * index + 1
     end
 
-    # O(1)
     def right_child_index(index)
       2 * index + 2
     end
 
-    # O(1)
     def out_of_bounds?(index)
       index > size || index < 0
     end
