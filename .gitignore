@@ -1,9 +1,2 @@
 # Files
 .DS_Store
-
-# Folders
-target/
-.ensime_cache/
-**/*.d
-**/*.o
-**/*.dSYM
