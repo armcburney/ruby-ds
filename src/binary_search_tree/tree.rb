@@ -15,7 +15,10 @@ module Algorithms
     end
 
     # Recursively inserts a new node into the tree.
-    # Runtime: O(n) worst-case since it's not a balanced tree.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
     #
     # @param [Algorithms::Node] node
     # @param [Algorithms::Node] curr
@@ -36,7 +39,10 @@ module Algorithms
     end
 
     # Recursively deletes a node if it exists in the tree.
-    # Runtime: O(n) worst-case since it's not a balanced tree.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
     #
     # @param [Algorithms::Node] node
     def delete(node)
@@ -57,6 +63,10 @@ module Algorithms
 
     # Finds and returns a node with the value in a subtree.
     #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
+    #
     # @param [Integer] val
     # @param [Algorithms::Node] node
     # @return [Algorithms::Node]
@@ -72,6 +82,10 @@ module Algorithms
     end
 
     # Returns the height of the tree.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
     #
     # @param [Algorithms::Node] node
     # @param [Integer] h
@@ -90,6 +104,10 @@ module Algorithms
 
     # Finds and returns the minimum element in a subtree.
     #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
+    #
     # @param [Algorithms::Node] node
     # @return [Algorithms::Node]
     def find_min(node = root)
@@ -98,6 +116,10 @@ module Algorithms
     end
 
     # Finds and returns the maximum element in a subtree.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
     #
     # @param [Algorithms::Node] node
     # @return [Algorithms::Node]
@@ -108,6 +130,10 @@ module Algorithms
 
     # Finds and returns the next highest node in a subtree.
     #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
+    #
     # @param [Algorithms::Node] node
     # @return [Algorithms::Node]
     def next_highest_node(node = root)
@@ -116,6 +142,10 @@ module Algorithms
     end
 
     # Returns the number of nodes beneath a given node.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(n) average case
     #
     # @param [Algorithms::Node] node
     # @return [Integer]
@@ -132,6 +162,10 @@ module Algorithms
     end
 
     # Returns `true` if the binary subtree is valid.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(n) average case
     #
     # @param [Algorithms::Node] node
     # @return [Boolean]
@@ -152,6 +186,10 @@ module Algorithms
 
     # Prints the tree node values pre-order.
     #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(n) average case
+    #
     # @param [Algorithms::Node] node
     def pre_order_traversal(node = root)
       return if node.nil?
@@ -163,6 +201,10 @@ module Algorithms
 
     # Prints the tree node values in-order.
     #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(n) average case
+    #
     # @param [Algorithms::Node] node
     def in_order_traversal(node = root)
       return if node.nil?
@@ -173,6 +215,10 @@ module Algorithms
     end
 
     # Prints the tree node values post-order.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(n) average case
     #
     # @param [Algorithms::Node] node
     def post_order_traversal(node = root)

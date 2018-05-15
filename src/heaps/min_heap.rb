@@ -11,7 +11,7 @@ module Algorithms
     #
     # Time complexity:
     #   O(log(n)) worst case
-    #   O(log(1)) best case
+    #   O(log(n)) best case
     #
     # @param [Integer] val
     def insert(val)
@@ -24,6 +24,7 @@ module Algorithms
     # Time complexity:
     #   O(log(n)) worst case
     #   O(log(n)) best case
+    #
     def delete_min
       @heap[0], @heap[size - 1] = @heap[size - 1], @heap[0]
       minimum = @heap.pop
@@ -36,6 +37,7 @@ module Algorithms
     # Time complexity:
     #   O(1) worst case
     #   O(1) best case
+    #
     def min
       @heap.first
     end
@@ -45,6 +47,7 @@ module Algorithms
     # Time complexity:
     #   O(1) worst case
     #   O(1) best case
+    #
     def size
       @heap.size
     end
@@ -54,6 +57,7 @@ module Algorithms
     # Time complexity:
     #   O(log(n)) worst case
     #   O(log(n)) best case
+    #
     def height
       traverse_left
     end
@@ -63,6 +67,7 @@ module Algorithms
     # Time complexity:
     #   O(1) worst case
     #   O(1) best case
+    #
     def empty?
       size.zero?
     end
@@ -73,6 +78,8 @@ module Algorithms
     #   O(n * log(n)) worst case
     #   O(n * log(n)) average case
     #   O(n) best case
+    #
+    # @param [Array[Integer]] arr
     def self.decreasing_order_sort(arr)
       heap = MinHeap.new
       arr.each { |e| heap.insert(e) }
