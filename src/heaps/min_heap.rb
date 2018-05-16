@@ -26,7 +26,7 @@ module Algorithms
     #   O(log(n)) best case
     #
     def delete_min
-      @heap[0], @heap[size - 1] = @heap[size - 1], @heap[0]
+      swap!(0, size - 1)
       minimum = @heap.pop
       bubble_down
       minimum
@@ -95,29 +95,54 @@ module Algorithms
       return if out_of_bounds?(parent_i) || @heap[parent_i] <= @heap[index]
 
       # Swap the values
-      @heap[parent_i], @heap[index] = @heap[index], @heap[parent_i]
+      swap!(parent_i, index)
 
       # Recurse up
       bubble_up(parent_i)
     end
 
     def bubble_down(index = 0)
-      left  = @heap[left_child_index(index)]
-      right = @heap[right_child_index(index)]
-      curr  = @heap[index]
+      # Get the values for the current node and its immediate children
+      curr, left, right = current_and_children(index)
 
+      # Base case, when the current element is less than the left and right
+      # child, and not a leaf node
       return if (left.nil? || left >= curr) && (right.nil? || right >= curr)
 
-      if !left.nil? && left < curr
-        bubble_down(left_child_index(index))
-      elsif !right.nil?
-        bubble_down(right_child_index(index))
-      end
+      # Get the index of the next child to traverse to based on the properties
+      # of the heap
+      swapped_index =
+        if !left.nil? && !right.nil? && left < curr && right < curr
+          left <= right ? left_child_index(index) : right_child_index(index)
+        elsif !left.nil? && !right.nil? && left < curr
+          left_child_index(index)
+        elsif !left.nil? && !right.nil? && right < curr
+          right_child_index(index)
+        elsif right.nil? && left < curr
+          left_child_index(index)
+        elsif left.nil? && right < curr
+          right_child_index(index)
+        end
+
+      # Safety net for bad conditions
+      return if swapped_index.nil?
+
+      # Swap the index and bubble down
+      swap!(index, swapped_index)
+      bubble_down(swapped_index)
     end
 
     def traverse_left(index = 0, count = 0)
       return count if out_of_bounds?(index)
       traverse_left(left_child_index(index), count + 1)
+    end
+
+    def current_and_children(index)
+      [
+        @heap[index],
+        @heap[left_child_index(index)],
+        @heap[right_child_index(index)]
+      ]
     end
 
     def parent_index(index)
@@ -134,6 +159,10 @@ module Algorithms
 
     def out_of_bounds?(index)
       index > size || index < 0
+    end
+
+    def swap!(index1, index2)
+      @heap[index1], @heap[index2] = @heap[index2], @heap[index1]
     end
   end
 end
