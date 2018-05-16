@@ -1,5 +1,5 @@
-require_relative "../../src/binary_search_tree/node"
-require_relative "../../src/binary_search_tree/tree"
+require_relative "../../../src/data_structures/binary_search_tree/node"
+require_relative "../../../src/data_structures/binary_search_tree/binary_tree"
 
 describe Algorithms::BinaryTree do
   subject { described_class.new }

@@ -1,4 +1,4 @@
-require_relative "../../src/heaps/min_heap"
+require_relative "../../../src/data_structures/heaps/min_heap"
 
 describe Algorithms::MinHeap do
   subject { described_class.new }
