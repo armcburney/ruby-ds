@@ -38,6 +38,20 @@ describe Algorithms::MinHeap do
 
   describe "#height" do
     it "returns the proper height of the heap" do
+      arr = [8, 2, 1, 4, 9, 7, 3]
+      arr.each { |e| subject.insert(e) }
+
+      expected_height = Math.log(arr.size, 2).ceil
+      expect(subject.height).to be(expected_height)
+    end
+
+    it "returns `1` if the heap has one element" do
+      subject.insert(1)
+      expect(subject.height).to be(1)
+    end
+
+    it "returns `0` if the heap is empty" do
+      expect(subject.height).to be(0)
     end
   end
 

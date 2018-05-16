@@ -133,7 +133,7 @@ module Algorithms
     end
 
     def traverse_left(index = 0, count = 0)
-      return count if out_of_bounds?(index)
+      return count if out_of_bounds?(left_child_index(index))
       traverse_left(left_child_index(index), count + 1)
     end
 
