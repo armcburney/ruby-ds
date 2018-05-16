@@ -55,11 +55,11 @@ module Algorithms
     # Returns the height of the heap.
     #
     # Time complexity:
-    #   O(log(n)) worst case
-    #   O(log(n)) best case
+    #   O(1) worst case
+    #   O(1) best case
     #
     def height
-      traverse_left
+      Math.log(size + 1, 2).ceil
     end
 
     # Returns `true` if the heap is empty.
@@ -116,11 +116,6 @@ module Algorithms
       # Swap the index and bubble down
       swap!(index, swapped_index)
       bubble_down(swapped_index)
-    end
-
-    def traverse_left(index = 0, count = 0)
-      return count if out_of_bounds?(left_child_index(index))
-      traverse_left(left_child_index(index), count + 1)
     end
 
     def current_and_children(index)
