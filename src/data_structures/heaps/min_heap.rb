@@ -111,21 +111,7 @@ module Algorithms
 
       # Get the index of the next child to traverse to based on the properties
       # of the heap
-      swapped_index =
-        if !left.nil? && !right.nil? && left < curr && right < curr
-          left <= right ? left_child_index(index) : right_child_index(index)
-        elsif !left.nil? && !right.nil? && left < curr
-          left_child_index(index)
-        elsif !left.nil? && !right.nil? && right < curr
-          right_child_index(index)
-        elsif right.nil? && left < curr
-          left_child_index(index)
-        elsif left.nil? && right < curr
-          right_child_index(index)
-        end
-
-      # Safety net for bad conditions
-      return if swapped_index.nil?
+      swapped_index = left.nil? || (!right.nil? && right < left) ? right_child_index(index) : left_child_index(index)
 
       # Swap the index and bubble down
       swap!(index, swapped_index)
