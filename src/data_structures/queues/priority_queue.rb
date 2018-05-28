@@ -8,6 +8,7 @@ module Algorithms
     # Instantiates a new priority queue.
     def initialize
       @heap = []
+      @insertion_time = 0
     end
 
     # Inserts an element into the queue.
@@ -18,11 +19,10 @@ module Algorithms
     #
     # @param [Integer] val
     def push(object, priority:)
-      @heap << [object, priority]
+      @heap << { item: object, priority: priority, insertion_time: @insertion_time }
+      @insertion_time += 1
       bubble_up
     end
-
-    alias << push
 
     # Deletes the minimum element from the queue.
     #
@@ -32,9 +32,9 @@ module Algorithms
     #
     def pop
       swap!(0, size - 1)
-      minimum, = @heap.pop
+      minimum_hash = @heap.pop
       bubble_down
-      minimum
+      minimum_hash[:item]
     end
 
     # Returns the minimum element of the queue.
@@ -44,7 +44,7 @@ module Algorithms
     #   O(1) best case
     #
     def min
-      @heap.first.first
+      @heap.first[:item]
     end
 
     # Returns the size of the queue.
@@ -72,38 +72,39 @@ module Algorithms
     def bubble_up(index = size - 1)
       parent_i = parent_index(index)
 
-      # Base case, where the parent value is <=
-      return if out_of_bounds?(parent_i) || @heap[parent_i].last <= @heap[index].last
+      # Base case, where the parent value is <= or out of bounds.
+      return if out_of_bounds?(parent_i) || @heap[parent_i][:priority] <= @heap[index][:priority]
 
-      # Swap the values
+      # Swap the values.
       swap!(parent_i, index)
 
-      # Recurse up
+      # Recurse up.
       bubble_up(parent_i)
     end
 
     def bubble_down(index = 0)
-      # Get the values for the current node and its immediate children
+      # Get the values for the current node and its immediate children.
       curr, left, right = current_and_children(index)
 
       # Base case, when the current element is less than the left and right
-      # child, and not a leaf node
-      return if (left.nil? || left >= curr) && (right.nil? || right >= curr)
+      # child, and not a leaf node.
+      return if (left.nil? || left[:priority] > curr[:priority]) &&
+                (right.nil? || right[:priority] > curr[:priority])
 
       # Get the index of the next child to traverse to based on the properties
-      # of the heap
-      swapped_index = left.nil? || (!right.nil? && right < left) ? right_child_index(index) : left_child_index(index)
+      # of the heap.
+      swapped_index = next_index(left, right, index)
 
-      # Swap the index and bubble down
+      # Swap the index and bubble down.
       swap!(index, swapped_index)
       bubble_down(swapped_index)
     end
 
     def current_and_children(index)
       [
-        @heap[index]&.last,
-        @heap[left_child_index(index)]&.last,
-        @heap[right_child_index(index)]&.last
+        @heap[index],
+        @heap[left_child_index(index)],
+        @heap[right_child_index(index)]
       ]
     end
 
@@ -117,6 +118,20 @@ module Algorithms
 
     def right_child_index(index)
       2 * index + 2
+    end
+
+    def next_index(left, right, index)
+      if !left.nil? && !right.nil? && right[:priority] == left[:priority] &&
+         left[:insertion_time] < right[:insertion_time]
+        left_child_index(index)
+      elsif !left.nil? && !right.nil? && right[:priority] == left[:priority] &&
+            right[:insertion_time] < left[:insertion_time]
+        right_child_index(index)
+      elsif left.nil? || (!right.nil? && right[:priority] < left[:priority])
+        right_child_index(index)
+      else
+        left_child_index(index)
+      end
     end
 
     def out_of_bounds?(index)
