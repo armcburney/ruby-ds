@@ -228,7 +228,7 @@ Time complexity:
 @return [Boolean]
 #+END_SRC
 
-**** =decreasing_order_sort=
+**** =self.decreasing_order_sort=
 #+BEGIN_SRC
 Sorts an array using heap sort, in decreasing order.
 
@@ -242,10 +242,10 @@ Time complexity:
 #+END_SRC
 
 *** Max Heap
-- [ ] insert
-- [ ] delete_max
-- [ ] max
-- [ ] size
-- [ ] height
-- [ ] empty?
-- [ ] increasing_order_sort
+**** =insert=
+**** =delete_max=
+**** =max=
+**** =size=
+**** =height=
+**** =empty?=
+**** =self.increasing_order_sort=
