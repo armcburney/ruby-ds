@@ -25,6 +25,7 @@ module Algorithms
     #   O(log(n)) worst case
     #   O(log(n)) best case
     #
+    # @return [Integer]
     def delete_min
       swap!(0, size - 1)
       minimum = @heap.pop
@@ -38,6 +39,7 @@ module Algorithms
     #   O(1) worst case
     #   O(1) best case
     #
+    # @return [Integer]
     def min
       @heap.first
     end
@@ -48,6 +50,7 @@ module Algorithms
     #   O(1) worst case
     #   O(1) best case
     #
+    # @return [Integer]
     def size
       @heap.size
     end
@@ -58,6 +61,7 @@ module Algorithms
     #   O(1) worst case
     #   O(1) best case
     #
+    # @return [Integer]
     def height
       Math.log(size + 1, 2).ceil
     end
@@ -68,6 +72,7 @@ module Algorithms
     #   O(1) worst case
     #   O(1) best case
     #
+    # @return [Boolean]
     def empty?
       size.zero?
     end
@@ -79,7 +84,8 @@ module Algorithms
     #   O(n * log(n)) average case
     #   O(n) best case
     #
-    # @param [Array[Integer]] arr
+    # @param  [Array[Integer]] arr
+    # @return [Array[Integer]]
     def self.decreasing_order_sort(arr)
       heap = MinHeap.new
       arr.each { |e| heap.insert(e) }

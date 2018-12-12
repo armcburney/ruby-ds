@@ -1,0 +1,251 @@
+* =armcburney/ruby-ds=
+Common algorithms and data structures written in Ruby.
+
+** Purpose
+This repository provides the implementation of various algorithms in Ruby. The
+purpose of this repository is to re-acquaint myself with various algorithms used
+in computer science, as well as their spacial and time complexities.
+
+** Data Structures
+*** Binary Tree
+**** =insert=
+#+BEGIN_SRC
+Recursively inserts a new node into the tree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Algorithms::Node] node
+@param [Algorithms::Node] curr
+#+END_SRC
+
+**** =delete=
+#+BEGIN_SRC
+Recursively deletes a node if it exists in the tree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Algorithms::Node] node
+#+END_SRC
+
+**** =find_node=
+#+BEGIN_SRC
+Finds and returns a node with the value in a subtree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Integer] val
+@param [Algorithms::Node] node
+@return [Algorithms::Node]
+#+END_SRC
+
+**** =height=
+#+BEGIN_SRC
+Returns the height of the tree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Algorithms::Node] node
+@param [Integer] h
+@return [Integer]
+#+END_SRC
+
+**** =find_min=
+#+BEGIN_SRC
+Finds and returns the minimum element in a subtree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Algorithms::Node] node
+@return [Algorithms::Node]
+#+END_SRC
+
+**** =find_max=
+#+BEGIN_SRC
+Finds and returns the maximum element in a subtree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Algorithms::Node] node
+@return [Algorithms::Node]
+#+END_SRC
+
+**** =next_highest_node=
+#+BEGIN_SRC
+Finds and returns the next highest node in a subtree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Algorithms::Node] node
+@return [Algorithms::Node]
+#+END_SRC
+
+**** =count_nodes=
+#+BEGIN_SRC
+Returns the number of nodes beneath a given node.
+
+Time complexity:
+  O(n) worst case
+  O(n) average case
+
+@param [Algorithms::Node] node
+@return [Integer]
+#+END_SRC
+
+**** =exists?=
+#+BEGIN_SRC
+Returns `true` if the value exists in the binary subtree.
+
+Time complexity:
+  O(n) worst case
+  O(log(n)) average case
+
+@param [Algorithms::Node] node
+#+END_SRC
+
+**** =valid?=
+#+BEGIN_SRC
+Returns `true` if the binary subtree is valid.
+
+Time complexity:
+  O(n) worst case
+  O(n) average case
+
+@param [Algorithms::Node] node
+@return [Boolean]
+#+END_SRC
+
+**** =pre_order_traversal=
+#+BEGIN_SRC
+Prints the tree node values pre-order.
+
+Time complexity:
+  O(n) worst case
+  O(n) average case
+
+@param [Algorithms::Node] node
+#+END_SRC
+
+**** =in_order_traversal=
+#+BEGIN_SRC
+Prints the tree node values in-order.
+
+Time complexity:
+  O(n) worst case
+  O(n) average case
+
+@param [Algorithms::Node] node
+#+END_SRC
+
+**** =post_order_traversal=
+#+BEGIN_SRC
+Prints the tree node values post-order.
+
+Time complexity:
+  O(n) worst case
+  O(n) average case
+
+@param [Algorithms::Node] node
+#+END_SRC
+
+*** Min Heap
+**** =insert=
+#+BEGIN_SRC
+Inserts an element into the heap.
+
+Time complexity:
+  O(log(n)) worst case
+  O(log(n)) best case
+
+@param [Integer] val
+#+END_SRC
+
+**** =delete_min=
+#+BEGIN_SRC
+Deletes the minimum element from the heap.
+
+Time complexity:
+  O(log(n)) worst case
+  O(log(n)) best case
+
+@return [Integer]
+#+END_SRC
+
+**** =min=
+#+BEGIN_SRC
+Returns the minimum element of the heap.
+
+Time complexity:
+  O(1) worst case
+  O(1) best case
+
+@return [Integer]
+#+END_SRC
+
+**** =size=
+#+BEGIN_SRC
+Returns the size of the heap.
+
+Time complexity:
+  O(1) worst case
+  O(1) best case
+
+@return [Integer]
+#+END_SRC
+
+**** =height=
+#+BEGIN_SRC
+Returns the height of the heap.
+
+Time complexity:
+  O(1) worst case
+  O(1) best case
+
+@return [Integer]
+#+END_SRC
+
+**** =empty?=
+#+BEGIN_SRC
+Returns `true` if the heap is empty.
+
+Time complexity:
+  O(1) worst case
+  O(1) best case
+
+@return [Boolean]
+#+END_SRC
+
+**** =decreasing_order_sort=
+#+BEGIN_SRC
+Sorts an array using heap sort, in decreasing order.
+
+Time complexity:
+  O(n * log(n)) worst case
+  O(n * log(n)) average case
+  O(n) best case
+
+@param  [Array[Integer]] arr
+@return [Array[Integer]]
+#+END_SRC
+
+*** Max Heap
+- [ ] insert
+- [ ] delete_max
+- [ ] max
+- [ ] size
+- [ ] height
+- [ ] empty?
+- [ ] increasing_order_sort
