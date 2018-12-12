@@ -161,6 +161,17 @@ module Algorithms
       end
     end
 
+    # Returns `true` if the value exists in the binary subtree.
+    #
+    # Time complexity:
+    #   O(n) worst case
+    #   O(log(n)) average case
+    #
+    # @param [Algorithms::Node] node
+    def exists?(val, node = root)
+      !find_node(val, node).nil?
+    end
+
     # Returns `true` if the binary subtree is valid.
     #
     # Time complexity:

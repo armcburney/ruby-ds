@@ -197,6 +197,62 @@ describe Algorithms::BinaryTree do
     end
   end
 
+  describe "#exists?" do
+    context "normal tree" do
+      let(:tree)   { normal_tree }
+      let(:values) { normal_tree_values }
+
+      it "returns true if the value existss" do
+        values.each do |i|
+          expect(tree.exists?(i)).to be(true)
+        end
+      end
+
+      it "returns false if the value doesn't exists" do
+        not_values = Array(1...100).reject { |i| values.include?(i) }
+        not_values.each do |i|
+          expect(tree.exists?(i)).to be(false)
+        end
+      end
+    end
+
+    context "skinny tree" do
+      let(:tree)   { skinny_tree }
+      let(:values) { skinny_tree_values }
+
+      it "returns true if the value existss" do
+        values.each do |i|
+          expect(tree.exists?(i)).to be(true)
+        end
+      end
+
+      it "returns false if the value doesn't exists" do
+        not_values = Array(1...100).reject { |i| values.include?(i) }
+        not_values.each do |i|
+          expect(tree.exists?(i)).to be(false)
+        end
+      end
+    end
+
+    context "other tree" do
+      let(:tree)   { other_tree }
+      let(:values) { other_tree_values }
+
+      it "returns true if the value existss" do
+        values.each do |i|
+          expect(tree.exists?(i)).to be(true)
+        end
+      end
+
+      it "returns false if the value doesn't exists" do
+        not_values = Array(1...100).reject { |i| values.include?(i) }
+        not_values.each do |i|
+          expect(tree.exists?(i)).to be(false)
+        end
+      end
+    end
+  end
+
   describe "#valid?" do
     context "normal tree" do
       it "returns true" do
@@ -220,21 +276,33 @@ describe Algorithms::BinaryTree do
     end
   end
 
+  def normal_tree_values
+    [5, 3, 7, 4, 6, 2, 1]
+  end
+
+  def other_tree_values
+    [6, 5, 7, 8]
+  end
+
+  def skinny_tree_values
+    [1, 2, 3, 4, 5, 6]
+  end
+
   def normal_tree
     tree = Algorithms::BinaryTree.new
-    [5, 3, 7, 4, 6, 2, 1].each { |i| tree.insert(Algorithms::Node.new(i)) }
+    normal_tree_values.each { |i| tree.insert(Algorithms::Node.new(i)) }
     tree
   end
 
   def other_tree
     tree = Algorithms::BinaryTree.new
-    [6, 5, 7, 8].each { |i| tree.insert(Algorithms::Node.new(i)) }
+    other_tree_values.each { |i| tree.insert(Algorithms::Node.new(i)) }
     tree
   end
 
   def skinny_tree
     tree = Algorithms::BinaryTree.new
-    [1, 2, 3, 4, 5, 6].each { |i| tree.insert(Algorithms::Node.new(i)) }
+    skinny_tree_values.each { |i| tree.insert(Algorithms::Node.new(i)) }
     tree
   end
 end
